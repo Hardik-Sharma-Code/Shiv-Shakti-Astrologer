@@ -78,7 +78,7 @@
 
                 <div class="mb-3">
                     <div class="row">
-                        <div class="col text-md-center" style="border-right: 1px solid #ccc;">
+                        <div class="col" style="border-right: 1px solid #ccc;">
                             <label class="form-label d-block">Marital Status</label>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" id="single" value="Single" type="radio" checked="@Model.isSingle" name="MaritalStatus" />
@@ -93,7 +93,7 @@
                         <div class="col">
                             <label class="form-label" for="dietrychk">Dietary Habits</label>
                             <div class="row">
-                                <div class="col  text-center">
+                                <div class="col">
                                     @{
                                         foreach (var item in Model.dietryList!)
                                         {
@@ -305,11 +305,6 @@
                                         <input class="form-control" name="PPOccupationIncome" type="text" value="@Model.getCustomers!.PPOccupationIncome" placeholder="Occupation" />
                                     </div>
                                 </div>
-
-
-
-
-
 
                                 <div class="mb-3">
                                     <div class="row">
