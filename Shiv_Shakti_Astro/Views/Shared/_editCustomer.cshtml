@@ -1,0 +1,360 @@
+﻿@model Shiv_Shakti_Astro.VM.CustomerVM
+@{
+    @if (Model.getCustomers == null)
+    {
+        return;
+    }
+    <form id="contactForm" asp-action="addCustomer" asp-controller="Customer" method="post" enctype="multipart/form-data">
+        <div class="row">
+
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name</label>
+                    <input class="form-control" name="Name" value="@Model.getCustomers!.Name" type="text" placeholder="Name" />
+                    <input name="Id" value="@Model.getCustomers!.Id" type="hidden" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="birthDetails">Birth Details</label>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <input class="form-control txtbirthleft" id="datetimeInput" value="@Model.getCustomers!.BirthDate.ToString("yyyy-MM-ddTHH:mm:ss")" name="BirthDate" type="datetime-local" placeholder="Birth Details" />
+                        </div>
+                        <div class="col-md-4">
+                            <input class="form-control txtbirthleft txtbirthright" value="@Model.getCustomers!.Place" name="Place" type="text" placeholder="Birth Details" />
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Physical Apperance
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label d-block">Gender</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" id="male" value="Male" type="radio" checked="@Model.isMaleGenderSelect" name="Gender" />
+                                        <label class="form-check-label" for="male">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" id="female" value="Female" type="radio" checked="@Model.isFemaleGenderSelect" name="Gender" />
+                                        <label class="form-check-label" for="female">Female</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="name">Complexion</label>
+                                    <input class="form-control" value="@Model.getCustomers!.Complexion" name="Complexion" type="text" placeholder="Complexion" />
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="name">Height</label>
+                                    <input class="form-control" name="Height" value="@Model.getCustomers!.Height" type="text" placeholder="Height" />
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="name">Built</label>
+                                    <input class="form-control" name="Built" type="text" value="@Model.getCustomers!.Built" placeholder="Built" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="name">Caste & Gotra</label>
+                    <input class="form-control" name="CasteGotra" type="text" value="@Model.getCustomers!.CasteGotra" placeholder="Caste" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="name">Religion & Community</label>
+                    <input class="form-control" name="RelegionCommunitity" type="text" value="@Model.getCustomers!.RelegionCommunitity" placeholder="Relegion" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="name">Nationality</label>
+                    <input class="form-control" name="Nationality" type="text" value="@Model.getCustomers!.Nationality" placeholder="Nationality" />
+                </div>
+            </div>
+            <div class="col">
+
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col text-md-center" style="border-right: 1px solid #ccc;">
+                            <label class="form-label d-block">Marital Status</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" id="single" value="Single" type="radio" checked="@Model.isSingle" name="MaritalStatus" />
+                                <label class="form-check-label" for="single">Single</label>
+                            </div>
+                            <br />
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" id="divorced" value="Divorced" type="radio" checked="@Model.isDivorced" name="MaritalStatus" />
+                                <label class="form-check-label" for="divorced">Divorced</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label class="form-label" for="dietrychk">Dietary Habits</label>
+                            <div class="row">
+                                <div class="col  text-center">
+                                    @{
+                                        foreach (var item in Model.dietryList!)
+                                        {
+                                            <div class="form-check">
+                                                <input class="form-check-input dchk" type="checkbox" value="@item.Value" id="dietrychk_@item.Text" checked="@item.IsChecked" name="dietrychk"> @item.Text <br />
+                                            </div>
+                                        }
+                                        <input type="text" class="form-control dietry-habbits-input" name="DietaryHabits" readonly style="display: contents;">
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label" for="name">Qualification</label>
+                    <input class="form-control" name="Qualification" type="text" value="@Model.getCustomers!.Qualification" placeholder="Qualification" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="name">Occupation & Income</label>
+                    <input class="form-control" name="OccupationIncome" type="text" value="@Model.getCustomers!.OccupationIncome" placeholder="Occupation" />
+                </div>
+
+
+                <div class="mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label" for="name">Father</label>
+                                    <input class="form-control" name="FatherName" type="text" value="@Model.getCustomers!.FatherName" placeholder="Father" />
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="name">Mother</label>
+                                    <input class="form-control" name="MotherName" type="text" value="@Model.getCustomers!.MotherName" placeholder="Mother" />
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="name">Siblings</label>
+                                    <input class="form-control" name="Siblings" type="text" value="@Model.getCustomers!.Siblings" placeholder="Siblings" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="name">Address</label>
+                    @Html.DropDownListFor(model => model!.getCustomers!.AddressType, new List<SelectListItem>
+                {
+                new SelectListItem{ Text="Own", Value = "1" },
+                new SelectListItem{ Text="Rented", Value = "2" },
+                }, "Select", new { @class = "form-control" })
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="Address1" type="text" value="@Model.getCustomers!.Address1" placeholder="Address" />
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="Address2" type="text" value="@Model.getCustomers!.Address2" placeholder="Address" />
+                </div>
+
+
+            </div>
+            <div class="col">
+
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label" for="name">Contact No</label>
+                            <input class="form-control" name="ContactNumber" type="text" value="@Model.getCustomers!.ContactNumber" placeholder="Contact Number" />
+                        </div>
+                        <div class="col">
+                            <label class="form-label" for="name">Email</label>
+                            <input class="form-control" name="Email" type="email" value="@Model.getCustomers!.Email" placeholder="Email" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label" for="name">Hobbies</label>
+                            <input class="form-control" name="Hobbies" type="text" value="@Model.getCustomers!.Hobbies" placeholder="Hobbies" />
+                        </div>
+                        <div class="col">
+                            <label class="form-label" for="name">Other Details</label>
+                            <input class="form-control" name="OtherDetailes" value="@Model.getCustomers!.OtherDetailes" type="text" placeholder="Other Details" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Profile Pic</label>
+                    <input class="form-control" type="file" id="inputFile" name="CustomerPhoto">
+                </div>
+                <div class="mb-3 text-center">
+                    @if (!string.IsNullOrEmpty(@Model.getCustomers.Profilepic))
+                    {
+                        <img src="@Url.Content(Model.getCustomers.Profilepic)" style="max-width: 100%; max-height: 100%;" alt="Image" />
+                    }
+                    else
+                    {
+                        <p>No image available</p>
+                    }
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Partner Preferences
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label class="form-label d-block">Manglik</label>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" id="male" type="radio" value="Yes" checked="@Model.isMalikYes" name="PPManglik" />
+                                            <label class="form-check-label" for="male">Yes</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" id="female" type="radio" value="No" checked="@Model.isMalikNo" name="PPManglik" />
+                                            <label class="form-check-label" for="female">No</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="form-label" for="name">Dietry Habbits</label>
+                                        <div class="row">
+                                            <div class="col">
+                                                @{
+                                                    foreach (var item in Model.ppDietryList!)
+                                                    {
+                                                        <div class="form-check">
+                                                            <input class="form-check-input ppdchk" type="checkbox" value="@item.Value" id="dietrychk_@item.Text" checked="@item.IsChecked" name="ppdietrychk"> @item.Text <br />
+                                                        </div>
+
+                                                    }
+                                                    <input type="text" class="form-control ppdietry-habbits-input" name="PPDietryHabbit" readonly style="display: contents;">
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                Physical Apperance
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <label class="form-label d-block">Gender</label>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" id="male" type="radio" checked="@Model.isppMaleGenderSelect" name="PPGender" />
+                                                            <label class="form-check-label" for="male">Male</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" id="female" type="radio" name="PPGender" checked="@Model.isppFemaleGenderSelect" />
+                                                            <label class="form-check-label" for="female">Female</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <label class="form-label" for="name">Complexion</label>
+                                                        <input class="form-control" name="PPComplexion" type="text" value="@Model.getCustomers!.PPComplexion" placeholder="Complexion" />
+                                                    </div>
+                                                    <div class="col">
+                                                        <label class="form-label" for="name">Height</label>
+                                                        <input class="form-control" name="PPHeight" type="text" value="@Model.getCustomers!.PPHeight" placeholder="Height" />
+                                                    </div>
+                                                    <div class="col">
+                                                        <label class="form-label" for="name">Built</label>
+                                                        <input class="form-control" name="PPBuilt" type="text" value="@Model.getCustomers!.PPBuilt" placeholder="Built" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+                                    <div class="mb-3 col">
+                                        <label class="form-label" for="name">Caste & Gotra</label>
+                                        <input class="form-control" name="PPCasteGotra" type="text" value="@Model.getCustomers!.PPCasteGotra" placeholder="Caste & Gotra" />
+                                    </div>
+
+                                    <div class="mb-3 col">
+                                        <label class="form-label" for="name">Religion & Community</label>
+                                        <input class="form-control" name="PPReligionCommunity" type="text" value="@Model.getCustomers!.PPReligionCommunity" placeholder="Religion Community" />
+                                    </div>
+
+                                    <div class="mb-3 col">
+                                        <label class="form-label" for="name">Qualification</label>
+                                        <input class="form-control" name="PPQualification" type="text" value="@Model.getCustomers!.PPQualification" placeholder="Qualification" />
+                                    </div>
+
+                                    <div class="mb-3 col">
+                                        <label class="form-label" for="name">Occupation & Income</label>
+                                        <input class="form-control" name="PPOccupationIncome" type="text" value="@Model.getCustomers!.PPOccupationIncome" placeholder="Occupation" />
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                                <div class="mb-3">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label class="form-label" for="name">Preferred Country</label>
+                                            <input class="form-control" name="PPCountry" type="text" value="@Model.getCustomers!.PPCountry" placeholder="Country" />
+                                        </div>
+                                        <div class="col">
+                                            <label class="form-label" for="name">State</label>
+                                            <input class="form-control" name="PPState" type="text" value="@Model.getCustomers!.PPState" placeholder="State" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-secondary Savebtn" id="closemodal" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" id="save" class="btn btn-primary Savebtn">Save changes</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+}
+
+<script>
+
+    $(".dchk").click(function () {
+        var arr = [];
+        $.each($("input[name='dietrychk']:checked"), function () {
+            arr.push($(this).val());
+        });
+        $(".dietry-habbits-input").val(arr.join(", "));
+    });
+
+    $(".ppdchk").click(function () {
+        var pparr = [];
+        $.each($("input[name='ppdietrychk']:checked"), function () {
+            pparr.push($(this).val());
+        });
+        $(".ppdietry-habbits-input").val(pparr.join(", "));
+    });
+</script>

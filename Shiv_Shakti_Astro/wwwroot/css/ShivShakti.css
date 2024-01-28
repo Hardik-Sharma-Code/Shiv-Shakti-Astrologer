@@ -1,0 +1,154 @@
+﻿body {
+    font-family: 'Open Sans', sans-serif !important;
+    color: #000;
+}
+
+.imglogo {
+    height: auto;
+    width: 20%
+}
+
+.searchtxt {
+    width: 70% !important;
+    float: right;
+}
+
+.m-right {
+    margin-right: 10%;
+}
+
+.tblright {
+    margin-right: 5%
+}
+
+.btnColor {
+    background-color: #ff6f00;
+}
+
+.txtcolor {
+    color: #000;
+    font: bolder;
+}
+
+.txtbirthleft {
+    margin-left: 2%;
+}
+
+.txtbirthright {
+    margin-right: 2%;
+}
+
+
+.collapsible-box {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 0px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+}
+
+
+.box-header {
+    background-color: #ff6f00;
+    color: #000;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .box-header .icon {
+        font-size: 18px;
+    }
+
+.box-content {
+    padding: 10px;
+    display: block;
+}
+
+.Savebtn {
+    margin-top: 20px;
+    float: right;
+    display: block;
+    background-color: #ff6f00;
+    color: #000;
+    margin-left: 10px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    list-style: none;
+}
+
+.pagination a {
+        margin: 0 5px;
+}
+
+.lblclear {
+    /* Add your hover styles here */
+    color: red; /* Change the color to your desired hover color */
+    cursor: pointer; /* Optional: Change cursor to pointer on hover */
+    float:right;
+}
+
+.btnedit {
+    /* Add your hover styles here */
+    color: #ff6f00; /* Change the color to your desired hover color */
+    cursor: pointer; /* Optional: Change cursor to pointer on hover */
+}
+.btnedit:hover {
+    /* Add your hover styles here */
+    color: #ff6f00; /* Change the color to your desired hover color */
+    cursor: pointer; /* Optional: Change cursor to pointer on hover */
+}
+
+.tblscroll {
+    max-height: 300px; /* Set the maximum height you want */
+    overflow-y: auto;
+}
+
+.btn:hover {
+    /* Add your hover styles here */
+    background-color: #ff6f00;
+    color:#000;/* Change the color to your desired hover color */
+    cursor: pointer; /* Optional: Change cursor to pointer on hover */
+}
+
+#clearfilter {
+    float:right;
+    /* Add your hover styles here */
+    color: #000; /* Change the color to your desired hover color */
+    cursor: pointer; /* Optional: Change cursor to pointer on hover */
+}
+
+table.scrolldown {
+    width: 100%;
+    /* border-collapse: collapse; */
+    border-spacing: 0;
+    border: 2px solid black;
+}
+
+    /* To display the block as level element */
+    table.scrolldown tbody,
+    table.scrolldown thead {
+        display: block;
+    }
+
+
+table.scrolldown tbody {
+    /* Set the height of table body */
+    height: 50px;
+    /* Set vertical scroll */
+    overflow-y: auto;
+    /* Hide the horizontal scroll */
+    overflow-x: hidden;
+}
+
